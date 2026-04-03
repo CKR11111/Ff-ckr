@@ -214,11 +214,18 @@ def token_status(server):
         return jsonify({"error": "No tokens loaded for this server"}), 404
 
 if __name__ == "__main__":
+    import os
+    
+    # Render le assign garne Port line, yadi chhaina bhane 5070 use garne
+    port = int(os.environ.get("PORT", 5070))
+    
     print(f"🔑 Token Rotation System Activated")
     print(f"🔑 Each request will use {TOKENS_PER_REQUEST} tokens")
-    print(f"🌐 API Endpoint: http://0.0.0.0:5000/visit?region={region}&uid={uid}")
-    print(f"🔑 Server running on http://0.0.0.0:5000")
-    app.run(host="0.0.0.0", port=5070)
+    print(f"🌐 API Endpoint: http://0.0.0.0:{port}")
+    print(f"🔑 Server running on port {port}")
+    
+    # Port variable use garera app run garne
+    app.run(host="0.0.0.0", port=port)
 
 
 # Credit @JOBAYAR_AHMED
